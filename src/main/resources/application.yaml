@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Recipes
+  datasource:
+    url: jdbc:h2:file:./data/recipes;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  h2:
+    console.enabled: true
+    console:
+      settings:
+        trace: false
+        web-allow-others: true
+
+server:
+  port: 8080
+
