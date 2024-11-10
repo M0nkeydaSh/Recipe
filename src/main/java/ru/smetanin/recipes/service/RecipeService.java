@@ -63,8 +63,8 @@ public class RecipeService {
                 .time(recipeDto.getTime())
                 .countOfPortion(recipeDto.getCountOfPortions())
                 .datePublication(recipeDto.getDate_publication()).build();
-        var user = userRep.findById(String.valueOf(recipeDto.getUser().getId()));
-        recipe.setUsers(user.get());
+        var user = userRep.findById(String.valueOf(recipeDto.getUser().getId())).orElseThrow();
+        recipe.setUsers(user);
 
         return entityToDto(recipeRepository.save(recipe));
     }
