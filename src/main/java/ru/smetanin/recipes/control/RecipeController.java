@@ -19,6 +19,7 @@ public class RecipeController {
     public List<RecipeDto> getAll(){
         return recipeService.getAll();
     }
+
     @DeleteMapping("/delete/{id}")
     public HttpStatus delete(@PathVariable String id){
         recipeService.delete(id);
@@ -30,7 +31,14 @@ public class RecipeController {
         return recipeService.add(recipeDto);
     }
 
+    @GetMapping ("/getOne/{id}")
+    public RecipeDto getOne(String id){
+        return recipeService.getOne(id);
+    }
+    @PutMapping ("/update")
+    public RecipeDto update(@RequestBody RecipeDto recipeDto){
+        return recipeService.update(recipeDto);
+    }
+
 }
 
-
-// /api/v1/recipes/getAll
