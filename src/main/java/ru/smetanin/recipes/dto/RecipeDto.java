@@ -19,6 +19,6 @@ public class RecipeDto {
 
     private LocalDateTime date_publication;
 
-    private UserDto user;
+    private Long user;
 
 }
