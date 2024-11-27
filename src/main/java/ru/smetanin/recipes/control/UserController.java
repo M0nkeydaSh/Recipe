@@ -43,6 +43,3 @@ public class UserController {
     }
 
 }
-
-
-// /api/v1/user/getAll
