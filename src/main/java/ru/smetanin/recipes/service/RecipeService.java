@@ -18,11 +18,8 @@ public class RecipeService {
     private final UserRep userRep;
     public List<RecipeDto> getAll(){
         var recipes = recipeRepository.findAll();
-
         return recipeToRecipeDtoMapper(recipes);
     }
-
-
 
     private List<RecipeDto> recipeToRecipeDtoMapper(List<Recipe> recipeList) {
         List<RecipeDto> recipeDtoList = new ArrayList<>();
