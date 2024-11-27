@@ -18,8 +18,8 @@ public class RecipeController {
     private final RecipeService recipeService;
 
     @GetMapping("/getAll")
-    public List<RecipeDto> getAll() {
-        return recipeService.getAll();
+    public List<RecipeDto> getAll(@RequestParam(required = false, defaultValue = "") String name) {
+        return recipeService.getAll(name);
     }
 
     @DeleteMapping("/delete/{id}")

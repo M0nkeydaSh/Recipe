@@ -16,8 +16,14 @@ import java.util.List;
 public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final UserRep userRep;
-    public List<RecipeDto> getAll(){
-        var recipes = recipeRepository.findAll();
+
+    public List<RecipeDto> getAll(String name) {
+        List<Recipe> recipes;
+        if (name != null && !name.isBlank()) {
+            recipes = recipeRepository.findByName(name);
+        } else {
+            recipes = recipeRepository.findAll();
+        }
         return recipeToRecipeDtoMapper(recipes);
     }
 
@@ -53,7 +59,7 @@ public class RecipeService {
         return entityToDto(recipeRepository.save(recipe));
     }
 
-    private  Recipe dtoToEntity(RecipeDto recipeDto) {
+    private Recipe dtoToEntity(RecipeDto recipeDto) {
         var recipe = Recipe.builder()
                 .id(recipeDto.getId())
                 .name(recipeDto.getName())
@@ -66,13 +72,13 @@ public class RecipeService {
         return recipe;
     }
 
-    public RecipeDto getOne(String id){
+    public RecipeDto getOne(String id) {
         var recipeOne = recipeRepository.findById(id).orElseThrow();
 
         return entityToDto(recipeOne);
     }
 
-    public RecipeDto update( RecipeDto recipeDto) {
+    public RecipeDto update(RecipeDto recipeDto) {
 
 //        var recipe = recipeRepository.findById(recipeDto.getId()).orElseThrow();
 //        recipe.setName(recipeDto.getName());
