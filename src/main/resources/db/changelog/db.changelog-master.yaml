@@ -122,4 +122,22 @@ databaseChangeLog:
               referencedTableName: users
               validate: true
 
-
+  - changeSet:
+      id: 5
+      author: smetanin-vs
+      changes:
+        - createTable:
+            tableName: ingredients
+            columns:
+              - column:
+                  name: id
+                  type: varchar(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false

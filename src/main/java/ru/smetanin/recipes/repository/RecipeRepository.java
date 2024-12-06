@@ -12,4 +12,10 @@ import java.util.List;
 public interface RecipeRepository extends ListCrudRepository<Recipe, String> {
 
     List<Recipe> findByName(String name);
+
+    List<Recipe> findByNameContaining(String name);
+
+    List<Recipe> findByNameContainingIgnoreCase(String name);
+
+
 }

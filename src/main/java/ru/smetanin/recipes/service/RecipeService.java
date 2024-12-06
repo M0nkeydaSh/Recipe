@@ -14,13 +14,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RecipeService {
+
     private final RecipeRepository recipeRepository;
     private final UserRep userRep;
 
     public List<RecipeDto> getAll(String name) {
         List<Recipe> recipes;
         if (name != null && !name.isBlank()) {
-            recipes = recipeRepository.findByName(name);
+            recipes = recipeRepository.findByNameContainingIgnoreCase(name);
         } else {
             recipes = recipeRepository.findAll();
         }
