@@ -17,5 +17,4 @@ public interface RecipeRepository extends ListCrudRepository<Recipe, String> {
 
     List<Recipe> findByNameContainingIgnoreCase(String name);
 
-
 }

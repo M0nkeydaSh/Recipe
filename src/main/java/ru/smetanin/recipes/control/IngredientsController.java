@@ -19,8 +19,8 @@ public class IngredientsController {
     private final IngredientsService ingredientsService;
 
     @GetMapping("/getAll")
-    public List<IngredientsDto> getAll(){
-        return ingredientsService.getAll();
+    public List<IngredientsDto> getAll(@RequestParam(required = false, defaultValue = "") String name){
+        return ingredientsService.getAll(name);
     }
 
     @PostMapping("/add")

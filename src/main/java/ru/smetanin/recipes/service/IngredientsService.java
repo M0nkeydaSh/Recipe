@@ -41,9 +41,17 @@ public class IngredientsService {
 
 
 
-    public List<IngredientsDto> getAll(){
-        return ingrToIngrDtoMapper(ingrRep.findAll());
+    public List<IngredientsDto> getAll(String name){
+        List <Ingredients> ingredients;
+        if (name != null && !name.isBlank()) {
+            ingredients = ingrRep.findByNameContainingIgnoreCase(name);
+        } else {
+            ingredients = ingrRep.findAll();
+        }
+        return ingrToIngrDtoMapper(ingredients);
     }
+
+
 
     public IngredientsDto add(IngredientsDto ingredientsDto) {
         var ingr = dtoToEntity(ingredientsDto);
