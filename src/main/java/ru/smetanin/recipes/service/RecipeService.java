@@ -9,6 +9,7 @@ import ru.smetanin.recipes.repository.UserRep;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Service
@@ -74,6 +75,15 @@ public class RecipeService {
     }
 
     public RecipeDto getOne(String id) {
+        var recipeOne = recipeRepository.findById(id).orElseThrow();
+
+        return entityToDto(recipeOne);
+    }
+
+    public RecipeDto getRandomRecipe() {
+        List<Recipe> recipes = recipeRepository.findAll();
+        Random random = new Random();
+        String id = String.valueOf((random.nextInt(recipes.size())+1));
         var recipeOne = recipeRepository.findById(id).orElseThrow();
 
         return entityToDto(recipeOne);

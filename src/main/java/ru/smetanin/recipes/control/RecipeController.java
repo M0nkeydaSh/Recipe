@@ -38,6 +38,11 @@ public class RecipeController {
         return new ResponseEntity<>(recipeService.getOne(id), HttpStatus.OK);
     }
 
+    @GetMapping("/getRandomRecipe")
+    public ResponseEntity<RecipeDto> getRandomRecipe() {
+        return new ResponseEntity<>(recipeService.getRandomRecipe(), HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public RecipeDto update(@RequestBody RecipeDto recipeDto) {
         return recipeService.update(recipeDto);
